@@ -140,7 +140,12 @@ def loadmch(fname,format = 'f',endian = 'ieee-le',datadicflag = False):
 					if len(detflag)>6 and detflag[6] != 0 : data_dic[photonid]["w0"] = dat[photonid][-1]
 
 			elif savedetflag == 0:
-				data_dic = [{"detid": photon[0], "nscat": photon[1:1+maxmedia], "ppath": photon[1+maxmedia:1+2*maxmedia], "mom": photon[1+2*maxmedia:1+3*maxmedia], "p": photon[-7:-4:1], "v": photon[-4:-1:1], "w0": photon[-1]} for photon in dat]
+				data_dic = [{"detid": photon[0],
+							  "nscat": photon[1:1+maxmedia],
+							  "ppath": photon[1+maxmedia:1+2*maxmedia],
+							  "mom": photon[1+2*maxmedia:1+3*maxmedia],
+							  "p": photon[-7:-4:1], "v": photon[-4:-1:1],
+							  "w0": photon[-1]} for photon in dat]
 
 			del dat
 			dat = np.asarray(data_dic)
