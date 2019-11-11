@@ -34,12 +34,22 @@ def run(cfg, flag, mcxbin = './mcx'):
 	mc2 = []
 
 
-	if os.isfile(SID+'.mch'):
+	if os.path.isfile(SID+'.mch'):
 		mch = mcx.loadmch(SID+'.mch')
 
-	if os.isfile(SID+'.mc2'):
-		dt = round((cfg["Forward"]["T1"] - cfg["Forward"]["T0"])/cfg["Forward"]["Dt"])
-		mc2 = mcx.loadmc2(SID+'.mc2',cfg["Shapes"]["Size"]+[dt])
+	if os.path.isfile(SID+'.mc2'):
+
+		nbstep = round((cfg["Forward"]["T1"] - cfg["Forward"]["T0"])/cfg["Forward"]["Dt"])
+		
+		if not cfg["Domain"]["Dim"] or cfg["Domain"]["Dim"] == []:
+			dt = cfg["Domain"]["Dim"] + [nbstep]
+
+		else:
+			for find in cfg["Shapes"]:
+				if find["Grid"]:
+					dt = find["Grid"]["Size"]+[nbstep]
+
+		mc2 = mcx.loadmc2(SID+'.mc2',dt)
 
 
 	return mch, mc2

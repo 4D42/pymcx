@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 def create():
-	
+
 	cfgjson = {"Domain": {
 							"VolumeFile": "",
 							"Dim":    [],
@@ -13,7 +13,7 @@ def create():
 				"Session": {
 							"Photons":  1000000,
 							"RNGSeed":  29012392,
-							"ID": "qtest"
+							"ID": "default"
 						},
 				"Forward": {	"T0": 0.0e+00, "T1": 5.0e-09, "Dt": 5.0e-09},
 				"Optode": {
