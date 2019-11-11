@@ -12,7 +12,7 @@ def create():
 						},
 				"Session": {
 							"Photons":  1000000,
-							"RNGSeed":  29012392,
+							"RNGSeed":  -1,
 							"ID": "default"
 						},
 				"Forward": {	"T0": 0.0e+00, "T1": 5.0e-09, "Dt": 5.0e-09},
@@ -24,7 +24,7 @@ def create():
 										"Param1": [0.0, 0.0, 0.0, 0.0],
 										"Param2": [0.0, 0.0, 0.0, 0.0]
 										},
-							"Detector": [{"Pos": [29.0,  19.0,  0.0],	"R": 1.0}]
+							"Detector": [{"Pos": [29.0,  19.0,  0.0], "R": 1.0}]
 							},
 				"Shapes" : [	{"Grid" : {"Tag" : 1, "Size" : [42,42,42]}}]
 				}

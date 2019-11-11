@@ -40,14 +40,15 @@ def run(cfg, flag, mcxbin = './mcx'):
 	if os.path.isfile(SID+'.mc2'):
 
 		nbstep = round((cfg["Forward"]["T1"] - cfg["Forward"]["T0"])/cfg["Forward"]["Dt"])
-		
-		if not cfg["Domain"]["Dim"] or cfg["Domain"]["Dim"] == []:
+
+		if "Dim" in cfg["Domain"] and cfg["Domain"]["Dim"] != []:
 			dt = cfg["Domain"]["Dim"] + [nbstep]
 
-		else:
+		elif "Shapes" in cfg:
 			for find in cfg["Shapes"]:
 				if find["Grid"]:
-					dt = find["Grid"]["Size"]+[nbstep]
+					dt = find["Grid"]["Size"] + [nbstep]
+
 
 		mc2 = mcx.loadmc2(SID+'.mc2',dt)
 
