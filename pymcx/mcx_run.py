@@ -27,12 +27,12 @@ def run(cfg, flag, mcxbin = './mcx'):
 	f.write(json.dumps(cfg, sort_keys=True, indent=2))
 	f.close()
 
-	os.system(mcxbin+' -f '+SID+'.json '+flag)
+	if os.name == "posix":
+		os.system(mcxbin+' -f '+SID+'.json '+flag)
 
 
 	mch = []
 	mc2 = []
-
 
 	if os.path.isfile(SID+'.mch'):
 		mch = mcx.loadmch(SID+'.mch')
