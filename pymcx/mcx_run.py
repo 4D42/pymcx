@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def run(cfg, flag, mcxbin = './mcx'):
+def run(cfg, flag, mcxbin = 'default'):
 
 	"""
 	input:
@@ -20,22 +20,29 @@ def run(cfg, flag, mcxbin = './mcx'):
 	import os
 	import json
 	import pymcx as mcx
-	
+
+
 	SID = cfg['Session']['ID']
+
 
 	f = open(SID+'.json', 'w')
 	f.write(json.dumps(cfg, sort_keys=True, indent=2))
 	f.close()
 
-	if os.name == "posix":
-		os.system(mcxbin+' -f '+SID+'.json '+flag)
+
+	if mcxbin == 'default':
+		if os.name == "posix":
+			 mcxbin = './mcx'
+		else:
+			mcxbin = '.\mcx.exe'
+
+	os.system(mcxbin+' -f '+SID+'.json '+flag)
 
 
 	mch = []
 	mc2 = []
 
-	if os.path.isfile(SID+'.mch'):
-		mch = mcx.loadmch(SID+'.mch')
+	if os.path.isfile(SID+'.mch'): mch = mcx.loadmch(SID+'.mch')
 
 	if os.path.isfile(SID+'.mc2'):
 
