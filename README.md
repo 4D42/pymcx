@@ -7,10 +7,10 @@ Python package for [MCX](http://mcx.space/) .
 ## package information
 
 ### functions
-- `loadmch(fname, format, endian, datadicflag) :` load .mch file and output the detected photons data as an array or a dictionary.
+- `loadmch(fname, format, endian, datadict) :` load .mch file and output the detected photons data as an array or a dictionary.
 - `loadmc2(path, dimension) :`
-- `create() :`
-- `run(cfg, flag, mcxbin) :`
+- `create() :` create a configuration variable as a python dictionary that fallow the rules of the json structure configuration file.
+- `run(cfg, flags, mcxbin) :` run the mcx simulation with the configuration cfg and mcx flags 
 
 *All the functions can be used separately.*
 
