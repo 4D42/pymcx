@@ -1,6 +1,6 @@
 
 
-def loadmch(fname,format = 'f',endian = 'ieee-le',datadicflag = False):
+def loadmch(fname,format = 'f',endian = 'ieee-le',datadict = False):
 
 	"""
 	input:
@@ -127,7 +127,7 @@ def loadmch(fname,format = 'f',endian = 'ieee-le',datadicflag = False):
 
 
 		#make the data as a dictionary
-		if datadicflag:
+		if datadict:
 			if savedetflag:
 				data_dic = [{} for x in range(savedphoton)]
 				for photonid in range(savedphoton):
