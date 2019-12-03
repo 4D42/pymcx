@@ -7,8 +7,8 @@ def create():
 							"Dim":    [],
 							"OriginType": 1,
 							"LengthUnit": 1,
-							"Media": [{"mua": 0.00, "mus": 0.0, "g": 1.00, "n": 1.0},
-										 {"mua": 0.00, "mus": 0.0, "g": 1.00, "n": 1.0}]
+							"Media": [{"mua": 0.00, "mus": 0.0, "g": 0.90, "n": 1.0},
+										 {"mua": 0.05, "mus": 10.0, "g": 0.90, "n": 1.0}]
 						},
 				"Session": {
 							"Photons":  1000000,
