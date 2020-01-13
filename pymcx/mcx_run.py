@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def run(cfg, flag, mcxbin = 'default'):
+def run(cfg, flag, mcxbin = 'default', datadict = False):
 
 	"""
 	input:
@@ -42,7 +42,7 @@ def run(cfg, flag, mcxbin = 'default'):
 	mch = []
 	mc2 = []
 
-	if os.path.isfile(SID+'.mch'): mch = mcx.loadmch(SID+'.mch')
+	if os.path.isfile(SID+'.mch'): mch = mcx.loadmch(SID+'.mch', datadict = datadict)
 
 	if os.path.isfile(SID+'.mc2'):
 
@@ -53,7 +53,7 @@ def run(cfg, flag, mcxbin = 'default'):
 
 		elif "Shapes" in cfg:
 			for find in cfg["Shapes"]:
-				if find["Grid"]:
+				if "Grid" in find:
 					dt = find["Grid"]["Size"] + [nbstep]
 
 
