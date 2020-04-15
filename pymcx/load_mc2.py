@@ -4,8 +4,6 @@ email: mrtoastcheng@gmail.com
 
 """
 
-
-
 def loadmc2(path, dimension):
 
 	"""
@@ -23,9 +21,8 @@ def loadmc2(path, dimension):
 			same dimension specified by dim
 
 	"""
-
+	import numpy as np
 	from struct import unpack
-	import numpy as np 
 
 	f = open(path, 'rb')
 	data = f.read()

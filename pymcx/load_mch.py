@@ -35,11 +35,8 @@ def loadmch(fname,format = 'f',endian = 'ieee-le',datadict = False):
 			seeded simulation. Note that the seed is RNG specific. You must use
 			the an identical RNG to utilize these seeds for a new simulation.
 	"""
-
-
-	from struct import unpack
 	import numpy as np
-	
+	from struct import unpack
 	
 	def fread(fileid , N, Type):
 		"""
