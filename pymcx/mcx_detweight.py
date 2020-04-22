@@ -11,13 +11,12 @@ def detweight(detp,cfg):
 	 author: 
 	
 	 input:
-	     detp: the 2nd output from mcxlab. detp must a struct 
+	     detp: Detected photon. detp must a dictionary 
      prop: optical property list, as defined in the cfg.prop field of mcxlab's input
 	
 	 output:
-	     detw: re-caculated detected photon weight based on the partial path data and optical property table
+	     detw: re-caculated detected photon weight based on the partial path data and media optical property
 	
-	 this file is copied from Mesh-based Monte Carlo (MMC)
 	 
 	 License: GPLv3, see http://mcx.space/ for details
 	"""
@@ -32,7 +31,7 @@ def detweight(detp,cfg):
 	if type(detp) is dict:
 		
 		if not 'w0' in detp:
-			detw = np.ones(len(detp["ppath"]))
+			detw = 1
 		else:
 			detw = detp["w0"]
 		
