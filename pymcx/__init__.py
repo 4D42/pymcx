@@ -5,6 +5,7 @@ from .mcx_run import run
 #from .mcx_plotvol import mcxplotvol
 from .mcx_detweight import detweight
 from .mcx_plotphotons import plotphotons
+from .mcx_writevolbin import writevolbin
 
 __version__ = '1.0'
-__all__ = ['loadmc2', 'loadmch', 'create','run','detweight','plotphotons']
+__all__ = ['loadmc2', 'loadmch', 'create','run','detweight','plotphotons','writevolbin']
