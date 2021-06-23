@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def run(cfg, flag, mcxbin = 'default', datadict = False):
+def run(cfg, flag = '', mcxbin = 'default', datadict = False):
 
 	"""
 	input:
