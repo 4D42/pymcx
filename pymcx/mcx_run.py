@@ -53,6 +53,8 @@ def run(cfg, flag = '', mcxbin = 'default', datadict = False):
 
 		nbstep = round((cfg["Forward"]["T1"] - cfg["Forward"]["T0"])/cfg["Forward"]["Dt"])
 
+		dt = None
+
 		if "Dim" in cfg["Domain"] and cfg["Domain"]["Dim"] != []:
 			dt = cfg["Domain"]["Dim"] + [nbstep]
 
@@ -61,8 +63,8 @@ def run(cfg, flag = '', mcxbin = 'default', datadict = False):
 				if "Grid" in find:
 					dt = find["Grid"]["Size"] + [nbstep]
 
-
-		mc2 = mcx.loadmc2(SID+'.mc2',dt)
+		if dt is not None:
+			mc2 = mcx.loadmc2(SID+'.mc2', dt)
 
 
 	return mch, mc2
