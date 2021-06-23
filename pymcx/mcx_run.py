@@ -35,7 +35,7 @@ def run(cfg, flag = '', mcxbin = 'default', datadict = False):
 		if os.name == "posix":
 			mcxbin = './mcx'
 		else:
-			mcxbin = '.\mcx.exe'
+			mcxbin = r'.\mcx.exe'
 	else:
 		if not re.match(r'^"[^"]+"$', mcxbin):
 			mcxbin = f'"{mcxbin}"'
@@ -46,7 +46,8 @@ def run(cfg, flag = '', mcxbin = 'default', datadict = False):
 	mch = []
 	mc2 = []
 
-	if os.path.isfile(SID+'.mch'): mch = mcx.loadmch(SID+'.mch', datadict = datadict)
+	if os.path.isfile(SID+'.mch'):
+		mch = mcx.loadmch(SID+'.mch', datadict = datadict)
 
 	if os.path.isfile(SID+'.mc2'):
 
