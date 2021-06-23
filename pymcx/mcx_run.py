@@ -18,6 +18,7 @@ def run(cfg, flag, mcxbin = 'default', datadict = False):
 	"""
 
 	import os
+	import re
 	import json
 	import pymcx as mcx
 
@@ -32,9 +33,12 @@ def run(cfg, flag, mcxbin = 'default', datadict = False):
 
 	if mcxbin == 'default':
 		if os.name == "posix":
-			 mcxbin = './mcx'
+			mcxbin = './mcx'
 		else:
 			mcxbin = '.\mcx.exe'
+	else:
+		if not re.match(r'^"[^"]+"$', mcxbin):
+			mcxbin = f'"{mcxbin}"'
 
 	os.system(mcxbin+' -f '+SID+'.json '+flag)
 
