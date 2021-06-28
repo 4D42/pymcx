@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-def run(cfg, flag, mcxbin = 'default', datadict = False):
+def run(cfg, flag = '', mcxbin = 'default', datadict = False):
 
 	"""
 	input:
@@ -18,6 +18,7 @@ def run(cfg, flag, mcxbin = 'default', datadict = False):
 	"""
 
 	import os
+	import re
 	import json
 	import pymcx as mcx
 
@@ -32,9 +33,12 @@ def run(cfg, flag, mcxbin = 'default', datadict = False):
 
 	if mcxbin == 'default':
 		if os.name == "posix":
-			 mcxbin = './mcx'
+			mcxbin = './mcx'
 		else:
-			mcxbin = '.\mcx.exe'
+			mcxbin = r'.\mcx.exe'
+	else:
+		if not re.match(r'^"[^"]+"$', mcxbin):
+			mcxbin = f'"{mcxbin}"'
 
 	os.system(mcxbin+' -f '+SID+'.json '+flag)
 
@@ -42,11 +46,14 @@ def run(cfg, flag, mcxbin = 'default', datadict = False):
 	mch = []
 	mc2 = []
 
-	if os.path.isfile(SID+'.mch'): mch = mcx.loadmch(SID+'.mch', datadict = datadict)
+	if os.path.isfile(SID+'.mch'):
+		mch = mcx.loadmch(SID+'.mch', datadict = datadict)
 
 	if os.path.isfile(SID+'.mc2'):
 
 		nbstep = round((cfg["Forward"]["T1"] - cfg["Forward"]["T0"])/cfg["Forward"]["Dt"])
+
+		dt = None
 
 		if "Dim" in cfg["Domain"] and cfg["Domain"]["Dim"] != []:
 			dt = cfg["Domain"]["Dim"] + [nbstep]
@@ -56,8 +63,8 @@ def run(cfg, flag, mcxbin = 'default', datadict = False):
 				if "Grid" in find:
 					dt = find["Grid"]["Size"] + [nbstep]
 
-
-		mc2 = mcx.loadmc2(SID+'.mc2',dt)
+		if dt is not None:
+			mc2 = mcx.loadmc2(SID+'.mc2', dt)
 
 
 	return mch, mc2
